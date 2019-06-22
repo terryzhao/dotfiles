@@ -37,19 +37,15 @@ if [[ $? -eq 1 ]]; then
 fi
 
 aptitude install \
-  `# read-write NTFS driver for Linux` \
   ntfs-3g \
-  `# do not delete main-system-dirs` \
   safe-rm \
-  `# default for many other things` \
   tmux \
   build-essential \
   autoconf \
   make \
   cmake \
-  mktemp \
+  #mktemp \
   dialog \
-  `# unzip, unrar etc.` \
   cabextract \
   zip \
   unzip \
@@ -65,7 +61,6 @@ aptitude install \
   gzip \
   xz-utils \
   advancecomp \
-  `# optimize image-size` \
   gifsicle \
   optipng \
   pngcrush \
@@ -74,15 +69,11 @@ aptitude install \
   jpegoptim \
   libjpeg-progs \
   jhead \
-  `# utilities` \
   coreutils  \
   findutils  \
-  `# fast alternative to dpkg -L and dpkg -S` \
   dlocate \
-  `# quickly find files on the filesystem based on their name` \
   mlocate \
   locales \
-  `# removing unneeded localizations` \
   localepurge \
   sysstat \
   tcpdump \
@@ -91,14 +82,10 @@ aptitude install \
   atop \
   ack-grep \
   ngrep \
-  `# interactive processes viewer` \
   htop \
-  `# mysql processes viewer` \
   mytop \
-  `# interactive I/O viewer` \
   iotop \
   tree \
-  `# disk usage viewer` \
   ncdu \
   rsync \
   whois \
@@ -106,17 +93,12 @@ aptitude install \
   csstidy \
   recode \
   exuberant-ctags \
-  `# GNU bash` \
   bash \
   bash-completion \
-  `# command line clipboard` \
   xclip \
-  `# more colors in the shell` \
   grc \
-  `# fonts also "non-free"-fonts` \
-  `# -- you need "multiverse" || "non-free" sources in your "source.list" -- ` \
   fontconfig \
-  ttf-freefont \
+  #ttf-freefont \
   ttf-mscorefonts-installer \
   ttf-bitstream-vera \
   ttf-dejavu \
@@ -127,17 +109,13 @@ aptitude install \
   ttf-larabie-uncommon \
   ttf-liberation \
   xfonts-jmk \
-  `# trace everything` \
   strace \
-  `# get files from web` \
   wget \
   curl \
   w3m \
-  `# repo-tools`\
   git \
   subversion \
   mercurial \
-  `# usefull tools` \
   nodejs \
   npm \
   ruby-full \
@@ -152,7 +130,6 @@ aptitude install \
   python \
   python-pip \
   python-dev \
-  `# install python-pygments for json print` \
   python-pygments
 
 # try zsh?
