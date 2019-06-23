@@ -1577,3 +1577,11 @@ __svn_branch()
     | awk '{print " ("$1")" }'
 }
 
+# -------------------------------------------------------------------
+# show num in binary mode
+num2bin()
+{
+  local n bit
+  for (( n=$1 ; n>0 ; n >>= 1 )); do  bit="$(( n&1 ))$bit"; done
+  printf "%s\n" "$bit"
+}
