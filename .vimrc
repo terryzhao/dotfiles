@@ -180,10 +180,10 @@ endtry
 " Return to last edit position when opening files. (You want this!)
 if has('viminfo')
   if has('autocmd')
-     autocmd BufReadPost *\(.git/COMMIT_EDITMSG\)\@<!
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
+    autocmd BufReadPost *\(.git/COMMIT_EDITMSG\)\@<!
+          \ if line("'\"") > 0 && line("'\"") <= line("$") |
+          \   exe "normal! g`\"" |
+          \ endif
   endif
   " Remember info about open buffers on close.
   set viminfo^=%
@@ -400,18 +400,18 @@ if has('autocmd')
   augroup swapskip
     autocmd!
     silent! autocmd BufRead,BufNewFilePre
-      \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
-      \ setlocal noswapfile
+          \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
+          \ setlocal noswapfile
   augroup END
 endif
 
 " Don't keep undo files in temp directories or shm.
 if has('persistent_undo') && has('autocmd')
- augroup undoskip
-   autocmd!
-   silent! autocmd BufWritePre
-     \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
-     \ setlocal noundofile
+  augroup undoskip
+    autocmd!
+    silent! autocmd BufWritePre
+          \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
+          \ setlocal noundofile
   augroup END
 endif
 
@@ -421,8 +421,8 @@ if has('viminfo')
     augroup viminfoskip
       autocmd!
       silent! autocmd BufRead,BufNewFilePre
-        \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
-        \ setlocal viminfo=
+            \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
+            \ setlocal viminfo=
     augroup END
   endif
 endif
@@ -786,12 +786,12 @@ endfunction
 
 " Toggle between number and relativenumber.
 function! ToggleNumber()
-    if(&relativenumber == 1)
-        set norelativenumber
-        set number
-    else
-        set relativenumber
-    endif
+  if(&relativenumber == 1)
+    set norelativenumber
+    set number
+  else
+    set relativenumber
+  endif
 endfunc
 
 " Stripe whitespace.
@@ -815,15 +815,15 @@ endfunction
 
 " Strip trailing whitespace.
 function! StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
 endfunction
 
 function! CmdLine(str)
@@ -856,23 +856,31 @@ endfunction
 " Do not close window, when deleting a buffer.
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
+  let l:currentBufNum = bufnr("%")
+  let l:alternateBufNum = bufnr("#")
 
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
+  if buflisted(l:alternateBufNum)
+    buffer #
+  else
+    bnext
+  endif
 
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
+  if bufnr("%") == l:currentBufNum
+    new
+  endif
 
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
+  if buflisted(l:currentBufNum)
+    execute("bdelete! ".l:currentBufNum)
+  endif
 endfunction
+
+" Go to home and end using capitalized directions
+noremap H ^
+noremap L $
+
+" 突出显示当前行等
+set cursorcolumn
+set cursorline          
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
