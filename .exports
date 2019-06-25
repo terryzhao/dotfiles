@@ -376,3 +376,10 @@ export NODE_REPL_MODE="sloppy"
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING="UTF-8"
 
+# rust settings
+#
+# rust path
+if [ -d "$HOME/.cargo/bin" ]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
