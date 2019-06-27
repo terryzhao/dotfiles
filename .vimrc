@@ -882,6 +882,42 @@ noremap L $
 set cursorcolumn
 set cursorline          
 
+" cscope
+if has("cscope")
+ set csprg=/usr/bin/cscope
+ set csto=0
+ set cst 
+ set nocsverb
+ " add any database in current directory
+ if filereadable("cscope.out")
+    cs add cscope.out
+ " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+ cs add $CSCOPE_DB
+ endif
+ set csverb
+endif
+
+
+map <C-c> :cstag <C-R>=expand("<cword>")<CR><CR>
+:nnoremap <silent> <Leader>cs :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+:nnoremap <silent> <Leader>cg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+:nnoremap <silent> <Leader>cc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+:nnoremap <silent> <Leader>ct :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+:nnoremap <silent> <Leader>ce :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+:nnoremap <silent> <Leader>cf :cs find f <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+:nnoremap <silent> <Leader>ci :cs find i <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+:nnoremap <silent> <Leader>cd :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => load extra user-config
