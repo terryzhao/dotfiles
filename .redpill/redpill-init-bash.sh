@@ -59,7 +59,7 @@ for config_file in $custom; do
 done
 
 # prompt
-source "${REDPILL}/bash_prompt/gitprompt.sh"
+# source "${REDPILL}/bash_prompt/gitprompt.sh"
 
 unset file_type
 unset file_type_single
