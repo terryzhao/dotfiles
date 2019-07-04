@@ -459,13 +459,13 @@ if exists("+smartindent")
   set smartindent
 endif
 
-" 1 tab === 2 spaces
-set shiftwidth=2
-set tabstop=2
+" 1 tab === 4 spaces
+set shiftwidth=4
+set tabstop=4
 
 " Number of spaces to use for each step of indent.
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
