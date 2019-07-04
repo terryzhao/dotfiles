@@ -71,8 +71,8 @@ endif
 " Sets how many lines of history VIM has to remember.
 set history=100
 
-" Open max 50 tabs.
-set tabpagemax=50
+" Open max 100 tabs.
+set tabpagemax=100
 
 if v:version >= 500
   " try reducing the number of lines stored in a register
