@@ -311,7 +311,7 @@ set mat=2
 " Switch syntax highlighting on, when the terminal has colors.
 if &t_Co > 2 || has("gui_running")
   try
-    colorscheme molokai
+    colorscheme solarized
   catch /^Vim\%((\a\+)\)\=:E185/
     " not available
   endtry
@@ -582,7 +582,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.plt                      set filetype=gnuplot
 
   " C++
-  au BufRead,BufNewFile *.cpp                      set filetype=cpp
+  au BufRead,BufNewFile *.cpp,*.cc,*.cxx           set filetype=cpp
 
   " markdown
   au BufRead,BufNewFile *.md,*.markdown,*.ronn     set filetype=markdown
