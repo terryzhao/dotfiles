@@ -280,7 +280,10 @@ set scrolloff=3
 set sidescrolloff=4
 
 " Disable line numbers (left).
-set nonumber
+"set nonumber
+
+" show relative line numbers (left).
+set relativenumber 
 
 " No annoying sound on errors.
 set noerrorbells
