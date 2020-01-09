@@ -283,6 +283,7 @@ set sidescrolloff=4
 "set nonumber
 
 " show relative line numbers (left).
+set number
 set relativenumber 
 
 " No annoying sound on errors.
