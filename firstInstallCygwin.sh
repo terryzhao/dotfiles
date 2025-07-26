@@ -98,68 +98,6 @@ if [[ $? -eq 1 ]]; then
   echo "e.g.: C:\cygwin64\bin\mintty.exe -i /Cygwin-Terminal.ico /bin/zsh --login -"
 fi
 
-#
-# for webworker
-#
-
-ask_install "install webworker tools"
-if [[ $? -eq 1 ]]; then
-
-  echo "update/install ruby-rems ..."
-
-  gem update --pre
-
-  gem install sass --pre --verbose
-  gem install compass --pre --verbose
-  gem install autoprefixer-rails --pre --verbose
-  gem install compass-rgbapng --pre --verbose
-  gem install oily_png --verbose
-
-  echo "update/install npm-packages ..."
-
-  npm config set strict-ssl false
-  npm config set registry http://registry.npmjs.org
-
-  npm install -g npm
-
-  npm update -g
-
-  npm install -g diff-so-fancy
-  npm install -g bower
-  npm install -g grunt-cli
-  npm install -g grunt-init
-  npm install -g yo
-  npm install -g svgo
-
-  echo "install php-5-extensions ..."
-
-  apt-cyg install \
-    php \
-    php-json \
-    php-phar \
-    php-mysql \
-    php-curl \
-    php-gd \
-    php-intl \
-    php-imap \
-    php-mcrypt \
-    php-pspell \
-    php-recode \
-    php-tidy \
-    php-xmlrpc \
-    php-xsl \
-    php-tokenizer \
-    php-ctype
-
-  if [ \! -f $(whereis apt-cyg | cut -f 2 -d ' ') ] ; then
-    curl -sS https://getcomposer.org/installer | php --
-    install composer.phar /usr/bin
-    ln -s /usr/bin/composer.phar /usr/bin/composer
-    rm composer.phar
-  fi
-
-fi
-
 # update-fonts
 mkdir -p /usr/share/fonts/truetype/
 cp -vr $( dirname "${BASH_SOURCE[0]}" )/.fonts/* /usr/share/fonts/truetype/

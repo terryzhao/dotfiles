@@ -90,7 +90,6 @@ aptitude install \
   rsync \
   whois \
   vim \
-  csstidy \
   recode \
   exuberant-ctags \
   bash \
@@ -116,10 +115,6 @@ aptitude install \
   git \
   subversion \
   mercurial \
-  nodejs \
-  npm \
-  ruby-full \
-  imagemagick \
   lynx \
   nmap \
   pv \
@@ -138,133 +133,6 @@ echo
 if [[ $yesOrNo =~ ^[Yy]$ ]]; then
   sudo aptitude install zsh
   chsh -s $(which zsh)
-fi
-
-#
-# fixing nodejs for ubuntu
-#
-ln -s /usr/bin/nodejs /usr/bin/node
-
-#
-# install java
-#
-
-#su -
-#echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" | tee /etc/apt/sources.list.d
-#echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" | tee -a /etc/apt/sources
-#apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886
-#aptitude update
-#aptitude install oracle-java7-installer
-#exit
-
-
-#
-# install new git / ubuntu
-#
-
-#sudo add-apt-repository -y ppa:git-core/ppa
-#sudo aptitude update
-#sudo aptitude upgrade git
-
-#
-# install new git / debian
-#
-
-#su -
-#echo "deb http://ppa.launchpad.net/git-core/ppa/ubuntu precise main" | tee /etc/apt/sources.list.d/git-core.list
-#echo "deb-src http://ppa.launchpad.net/git-core/ppa/ubuntu precise main" | tee -a /etc/apt/sources.d/git-core.list
-#apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E1DF1F24
-#aptitude update
-#aptitude upgrade git
-#exit
-
-
-#
-# install Sublime Text 3
-#
-
-#sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
-#sudo aptitude update
-#sudo aptitude install sublime-text-installer
-#sudo ln -sf /opt/sublime_text/sublime_text /usr/local/bin/sublime
-
-
-#
-# install node.js without deb-files e.g. for Debian - stable
-#
-
-#curl https://www.npmjs.org/install.sh | sudo sh
-
-
-#
-# for webworker
-#
-
-ask_install "install webworker tools"
-if [[ $? -eq 1 ]]; then
-
-  echo "update/install ruby-rems ..."
-
-  gem update --pre
-
-  gem install sass --pre --verbose
-  gem install compass --pre --verbose
-  gem install autoprefixer-rails --pre --verbose
-  gem install compass-rgbapng --pre --verbose
-  gem install oily_png --verbose
-
-  echo "update/install npm-packages ..."
-
-  npm config set strict-ssl false
-  npm config set registry http://registry.npmjs.org
-
-  npm install -g npm
-
-  npm update -g
-
-  npm install -g diff-so-fancy
-  npm install -g bower
-  npm install -g grunt-cli
-  npm install -g grunt-init
-  npm install -g yo
-  npm install -g svgo
-
-  echo "install php-5-extensions ..."
-
-  aptitude install \
-    php5-cli \
-    php5-mysql \
-    php5-curl \
-    php5-gd \
-    php5-intl \
-    php-pear \
-    php5-imagick \
-    php5-imap \
-    php5-mcrypt \
-    php5-memcached \
-    php5-ming \
-    php5-ps \
-    php5-pspell \
-    php5-recode \
-    php5-snmp \
-    php5-sqlite \
-    php5-tidy \
-    php5-xmlrpc \
-    php5-xsl \
-    php5-xdebug \
-    php5-apcu \
-    php5-geoip
-
-  php5enmod json
-  php5enmod mcrypt
-  php5enmod curl
-  php5enmod mysql
-  php5enmod gd
-  php5enmod imagick
-  php5enmod apcu
-
-  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin
-  ln -s /usr/bin/composer.phar /usr/bin/composer
 fi
 
 # clean downloaded and already installed packages
